@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 400px;
+    width: 100%;
+    height: 580px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    font-size: 18px;
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.control-button {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="number"] {
+    font-size: 18px;
+    width: 60px;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #555;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 24px;
+    color: green;
+    font-weight: bold;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.control-group div {
+    margin: 0 10px;
+}
+
+select {
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#beatIndicator {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: none; /* Initially hidden */
+}
+.img{
+    width: 50px;
+}
+.headAA{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+}

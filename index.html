@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մետրոնոմ</title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" type="image/x-icon">
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="headAA">    <img class="img" src="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" alt="">    <h1>Մետրոնոմ</h1> <img class="img" src="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" alt="">
+</div>
+        <label for="bpm">BPM</label>
+        <div class="control-group">
+            <button class="control-button" id="bpmDecrease" aria-label="Decrease BPM">-</button>
+            <input type="number" id="bpm" value="120" min="20" max="400">
+            <button class="control-button" id="bpmIncrease" aria-label="Increase BPM">+</button>
+        </div>
+        <div id="hzInputs">
+            <label for="audioHz">(Hz)</label>
+            <div class="control-group">
+                <button class="control-button" id="freqDecrease" aria-label="Decrease Frequency">-</button>
+                <input class="audioHz" type="number" value="440" min="20" max="2000">
+                <button class="control-button" id="freqIncrease" aria-label="Increase Frequency">+</button>
+            </div>
+        </div>
+        <div id="noteInputs" style="display: none;">
+            <label for="note">Նոտա</label>
+            <select id="note">
+                <option value="261.63">Do (C)</option>
+                <option value="293.66">Re (D)</option>
+                <option value="329.63">Mi (E)</option>
+                <option value="349.23">Fa (F)</option>
+                <option value="392.00">Sol (G)</option>
+                <option value="440.00">La (A)</option>
+                <option value="493.88">Si (B)</option>
+            </select>
+        </div>
+        <label for="mode">Տեսակը</label>
+        <select id="mode">
+            <option value="hz">Հերց</option>
+            <option value="note">Նոտա</option>
+        </select>
+        <div>
+            <button id="startButton">Սկսել</button>
+            <button id="stopButton">Կանգնեցնել</button>
+        </div>
+        <div id="status">Կանգնեցված է</div>
+        <div id="beatIndicator"></div>
+    </div>
+<script src="script.js"></script>
+</body>
+
+</html>
