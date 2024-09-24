@@ -1,57 +1,103 @@
 <!DOCTYPE html>
-<html lang="hy">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Մետրոնոմ</title>
-    <link rel="icon" href="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" type="image/x-icon">
- <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width user-scalable=no">
+  <title>Metronome</title>
+
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+    type="text/css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script src="assets/js/monkeypatch.js"></script>
+  <script src="assets/js/metronome.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="headAA">    <img class="img" src="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" alt="">    <h1>Մետրոնոմ</h1> <img class="img" src="https://static.vecteezy.com/system/resources/previews/009/381/283/non_2x/metronome-clipart-design-illustration-free-png.png" alt="">
-</div>
-        <label for="bpm">BPM</label>
-        <div class="control-group">
-            <button class="control-button" id="bpmDecrease" aria-label="Decrease BPM">-</button>
-            <input type="number" id="bpm" value="120" min="20" max="400">
-            <button class="control-button" id="bpmIncrease" aria-label="Increase BPM">+</button>
+  <div class="metronome">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">The Metronome</span>
         </div>
-        <div id="hzInputs">
-            <label for="audioHz">(Hz)</label>
-            <div class="control-group">
-                <button class="control-button" id="freqDecrease" aria-label="Decrease Frequency">-</button>
-                <input class="audioHz" type="number" value="440" min="20" max="2000">
-                <button class="control-button" id="freqIncrease" aria-label="Increase Frequency">+</button>
+        <div class="mdl-layout__header-row">
+          <button
+            class="mdl-button mdl-demo mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+            id="add" onclick="play();">
+            <i id="play-icon" class="material-icons" role="presentation">play_arrow</i>
+            <span class="visuallyhidden">Add</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="mdl-layout__content">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--6-col">
+            <h6 class="mdl-typography--title">Tempo</h6>
+            <h2 id="bpm" class="mdl-typography--display-4"><output name="bpm" id="bpmOutput">120</output><span
+                class="mdl-typography--subhead"> bpm</span></h2>
+
+            <input class="mdl-slider mdl-js-slider" type="range" name="bpm" id="bpmInput" value="120" min="20" max="250"
+              oninput="tempo = event.target.value; bpmOutput.value = bpmInput.value;">
+
+            <h6 class="mdl-typography--title">Meter</h6>
+            <h2 id="bpm" class="mdl-typography--display-2"><output name="count" id="countOutput">4</output><span
+                class="mdl-typography--subhead"> counts</span></h2>
+
+            <input class="mdl-slider mdl-js-slider" type="range" name="count" id="countInput" value="4" min="1" max="12"
+              oninput="meter = event.target.value; countOutput.value = countInput.value;">
+          </div>
+
+          <div class="mdl-cell mdl-cell--6-col">
+            <h6 class="mdl-typography--title">Volumes</h6>
+
+            <div class="lav">
+              <img src="https://static.thenounproject.com/png/1002413-200.png" style="width: 60px;" alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="50" tabindex="0"
+                oninput="masterVolume = event.target.value / 100;">
             </div>
+
+            <div class="lav">
+              <img src="https://www.pianosightreading.com.au/wp-content/uploads/2023/03/accent.png" style="width: 80px;"
+                alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="100" tabindex="0"
+                oninput="accentVolume = event.target.value / 100;">
+            </div>
+
+            <div class="lav">
+              <img src="https://static.thenounproject.com/png/88568-200.png" style="width: 40px;" alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="75" tabindex="0"
+                oninput="quarterVolume = event.target.value / 100;">
+
+            </div>
+
+            <div class="lav">
+              <img src="https://static.thenounproject.com/png/897830-200.png" style="width: 40px;" alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0"
+                oninput="eighthVolume = event.target.value / 100;">
+            </div>
+
+            <div class="lav">
+              <img src="https://static.thenounproject.com/png/16346-200.png" style="width: 40px;" alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0"
+                oninput="sixteenthVolume = event.target.value / 100;">
+            </div>
+
+            <div class="lav">
+              <img src="https://static.thenounproject.com/png/673036-200.png" style="width: 40px;" alt="">
+              <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0"
+                oninput="tripletVolume = event.target.value / 100;">
+            </div>
+            
+          </div>
         </div>
-        <div id="noteInputs" style="display: none;">
-            <label for="note">Նոտա</label>
-            <select id="note">
-                <option value="261.63">Do (C)</option>
-                <option value="293.66">Re (D)</option>
-                <option value="329.63">Mi (E)</option>
-                <option value="349.23">Fa (F)</option>
-                <option value="392.00">Sol (G)</option>
-                <option value="440.00">La (A)</option>
-                <option value="493.88">Si (B)</option>
-            </select>
-        </div>
-        <label for="mode">Տեսակը</label>
-        <select id="mode">
-            <option value="hz">Հերց</option>
-            <option value="note">Նոտա</option>
-        </select>
-        <div>
-            <button id="startButton">Սկսել</button>
-            <button id="stopButton">Կանգնեցնել</button>
-        </div>
-        <div id="status">Կանգնեցված է</div>
-        <div id="beatIndicator"></div>
+      </main>
     </div>
-<script src="script.js"></script>
+  </div>
 </body>
 
 </html>
